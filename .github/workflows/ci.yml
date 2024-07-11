@@ -27,6 +27,9 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
 
+    - name: Clean Build
+      run: dotnet clean ProyectoFinal/Proyecto_Final_Blood_Bank.sln
+
     - name: Restore dependencies
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
