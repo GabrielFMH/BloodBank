@@ -98,14 +98,9 @@
       <HintPath>packages\SpecFlow.NUnit.3.9.74\lib\net461\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-  <!-- Asegúrate de que solo se incluyan una vez y de la forma adecuada -->
-  <None Include="Features\*.feature">
-    <Generator>SpecFlowSingleFileGenerator</Generator>
-  </None>
-</ItemGroup>
-<ItemGroup>
-  <Compile Include="Features\*.feature.cs" Exclude="Features\*.feature.cs" />
+ <ItemGroup>
+  <None Update="Features\*.feature" />
+  <Compile Include="Features\*.feature.cs" />
 </ItemGroup>
 
 
