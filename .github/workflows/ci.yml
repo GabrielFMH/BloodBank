@@ -25,17 +25,16 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}  # Usa la variable de entorno para la versión de .NET
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
     - name: Build solution
-      run: dotnet build --configuration Release
+      run: dotnet build ProyectoFinal/Proyecto_Final_Blood_Bank.sln --configuration Release
 
     - name: Run tests
-      run: dotnet test --logger "trx;LogFileName=test_results.trx"
+      run: dotnet test ProyectoFinal/Proyecto_Final_Blood_Bank.sln --logger "trx;LogFileName=test_results.trx"
 
     - name: Publish test results
       uses: actions/upload-artifact@v2
       with:
         name: Test Results
         path: '**/*.trx'
-
