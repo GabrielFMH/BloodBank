@@ -19,10 +19,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up .NET
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Restore dependencies
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
