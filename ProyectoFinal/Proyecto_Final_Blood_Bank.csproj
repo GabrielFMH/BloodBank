@@ -240,15 +240,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <!--
-    <None Include="Features\AcomodarGrilla.feature" />
-    <None Include="Features\GestionarNotificaciones.feature" />
-    <None Include="Features\GestionarUnidadesdeSangre.feature" />
-    <None Include="Features\Login.feature" />
-    <None Include="Features\ProgramarCampana.feature" />
-    <None Include="Features\RegistrarUsuario.feature" />
-    <None Include="Features\RegistroPaciente.feature" />
-    -->
+    
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -259,7 +251,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Features\GestionarUsuario.feature" />
+<ItemGroup>
+      <Compile Remove="Features\*.feature.cs" />
+  <Compile Include="Features\*.feature.cs" />
+</ItemGroup>
     <None Include="specflow.json" />
   </ItemGroup>
   <ItemGroup>
