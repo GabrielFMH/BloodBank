@@ -98,6 +98,11 @@
       <HintPath>packages\SpecFlow.NUnit.3.9.74\lib\net461\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll</HintPath>
     </Reference>
   </ItemGroup>
+<ItemGroup>
+  <None Update="Features\*.feature" />
+  <Compile Include="Features\*.feature.cs" />
+</ItemGroup>
+
   <ItemGroup>
     <Compile Include="BANCO DE SANGRE.cs">
       <SubType>Form</SubType>
