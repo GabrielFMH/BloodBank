@@ -26,8 +26,8 @@ jobs:
 
     - name: Install SpecFlow Plugins
       run: |
-        dotnet add package SpecFlow.NUnit
-        dotnet add package SpecFlow.Tools.MsBuild.Generation
+        dotnet add ProyectoFinal/Proyecto_Final_Blood_Bank.csproj package SpecFlow.NUnit
+        dotnet add ProyectoFinal/Proyecto_Final_Blood_Bank.csproj package SpecFlow.Tools.MsBuild.Generation
 
     - name: Restore dependencies
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
@@ -43,3 +43,4 @@ jobs:
       with:
         name: Test Results
         path: '**/*.trx'
+
