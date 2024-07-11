@@ -98,12 +98,16 @@
       <HintPath>packages\SpecFlow.NUnit.3.9.74\lib\net461\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll</HintPath>
     </Reference>
   </ItemGroup>
-<None Include="Features\*.feature">
+  <ItemGroup>
+  <!-- Asegúrate de que solo se incluyan una vez y de la forma adecuada -->
+  <None Include="Features\*.feature">
     <Generator>SpecFlowSingleFileGenerator</Generator>
-    <LastGenOutput>%(Filename).feature.cs</LastGenOutput>
   </None>
-  <!-- Asegúrate de que los archivos .feature.cs se incluyan correctamente sin duplicar -->
-  <Compile Include="Features\*.feature.cs" />
+</ItemGroup>
+<ItemGroup>
+  <Compile Include="Features\*.feature.cs" Exclude="Features\*.feature.cs" />
+</ItemGroup>
+
 
   <ItemGroup>
     <Compile Include="BANCO DE SANGRE.cs">
