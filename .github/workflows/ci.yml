@@ -24,12 +24,6 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}  # Usa la variable de entorno para la versión de .NET
 
-    - name: Install SpecFlow Plugins
-      run: |
-        Install-Package SpecFlow.NUnit -ProjectName ProyectoFinal/Proyecto_Final_Blood_Bank.csproj
-        Install-Package SpecFlow.Tools.MsBuild.Generation -ProjectName ProyectoFinal/Proyecto_Final_Blood_Bank.csproj
-      shell: pwsh
-
     - name: Restore dependencies
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
