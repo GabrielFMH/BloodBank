@@ -241,6 +241,11 @@
   <ItemGroup>
     <Analyzer Include="packages\NUnit.Analyzers.4.2.0\analyzers\dotnet\cs\nunit.analyzers.dll" />
   </ItemGroup>
+<ItemGroup>
+  <PackageReference Include="SpecFlow.NUnit" Version="latest_version" />
+  <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="latest_version" />
+</ItemGroup>
+
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
