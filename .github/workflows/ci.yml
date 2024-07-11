@@ -1,16 +1,3 @@
-name: CI
-
-env: 
-  DOTNET_VERSION: '8.x'                     # la versión de .NET 
-  SONAR_ORG: 'gabrielfmh'                   # Nombre de la organización de 
-  SONAR_PROJECT: 'gabrielfmh_bloodbank'     # Key ID del proyecto de sonar 
-
-on: 
-  push: 
-    branches: [ "main" ] 
-  pull_request:
-  workflow_dispatch: 
-
 jobs:
   build:
     runs-on: windows-latest
@@ -26,6 +13,9 @@ jobs:
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
+
+    - name: Clean existing obj directory
+      run: rm -rf ProyectoFinal/Proyecto_Final_Blood_Bank/obj/
 
     - name: Clean Build
       run: dotnet clean ProyectoFinal/Proyecto_Final_Blood_Bank.sln
@@ -44,3 +34,4 @@ jobs:
       with:
         name: Test Results
         path: '**/*.trx'
+
