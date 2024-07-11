@@ -27,9 +27,6 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
 
-    - name: Clean existing obj directory
-      run: rm -rf ProyectoFinal/Proyecto_Final_Blood_Bank/obj/
-
     - name: Clean Build
       run: dotnet clean ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
