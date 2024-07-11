@@ -31,7 +31,7 @@ jobs:
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
     - name: Build solution
-      run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:Platform="x64"
+      run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:Platform="AnyCPU"
 
     - name: Run tests
       run: dotnet test ProyectoFinal/Proyecto_Final_Blood_Bank.sln --logger "trx;LogFileName=test_results.trx"
