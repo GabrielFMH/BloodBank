@@ -1,0 +1,41 @@
+name: CI
+
+env: 
+  DOTNET_VERSION: '8.x'                     # la versión de .NET 
+  SONAR_ORG: 'gabrielfmh'                   # Nombre de la organización de 
+  SONAR_PROJECT: 'gabrielfmh_bloodbank'     # Key ID del proyecto de sonar 
+
+on: 
+  push: 
+    branches: [ "main" ] 
+  pull_request:
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}  # Usa la variable de entorno para la versión de .NET
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build solution
+      run: dotnet build --configuration Release
+
+    - name: Run tests
+      run: dotnet test --logger "trx;LogFileName=test_results.trx"
+
+    - name: Publish test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: Test Results
+        path: '**/*.trx'
+
