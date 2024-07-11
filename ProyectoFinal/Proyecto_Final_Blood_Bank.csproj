@@ -99,9 +99,24 @@
     </Reference>
   </ItemGroup>
  <ItemGroup>
+  <!-- Incluir archivos .feature como None para que SpecFlow los procese -->
+  <None Include="Features\AcomodarGrilla.feature" />
+  <None Include="Features\GestionarNotificaciones.feature" />
+  <None Include="Features\GestionarUnidadesdeSangre.feature" />
+  <None Include="Features\Login.feature" />
+  <None Include="Features\ProgramarCampana.feature" />
+  <None Include="Features\RegistrarUsuario.feature" />
+  <None Include="Features\RegistroPaciente.feature" />
+  <None Include="Features\GestionarUsuario.feature" />
+
+  <!-- Actualizar todos los archivos .feature para asegurar que SpecFlow los procese correctamente -->
   <None Update="Features\*.feature" />
+
+  <!-- Remover y luego incluir los archivos .feature.cs para evitar duplicaciones -->
+  <Compile Remove="Features\*.feature.cs" />
   <Compile Include="Features\*.feature.cs" />
 </ItemGroup>
+
 
 
   <ItemGroup>
