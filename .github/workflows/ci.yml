@@ -24,12 +24,6 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}  # Usa la variable de entorno para la versión de .NET
 
-    - name: Install additional .NET runtimes
-      run: |
-        # Instala las versiones necesarias de .NET runtimes y SDKs
-        choco install dotnetcore-runtime --version=8.0.0
-        choco install dotnetcore-sdk --version=8.0.0
-
     - name: Restore dependencies
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
