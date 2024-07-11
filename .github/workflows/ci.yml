@@ -1,40 +1,48 @@
-name: CI
+name: .NET Framework CI
 
-env: 
-  DOTNET_VERSION: '8.x'                     # la versión de .NET 
-  SONAR_ORG: 'gabrielfmh'                   # Nombre de la organización de 
-  SONAR_PROJECT: 'gabrielfmh_bloodbank'     # Key ID del proyecto de sonar 
-
-on: 
-  push: 
-    branches: [ "main" ] 
+on:
+  push:
+    branches: [ main ]
   pull_request:
-  workflow_dispatch: 
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: '8.x'                     # la versión de .NET 
+  SONAR_ORG: 'gabrielfmh'                   # Nombre de la organización de Sonar
+  SONAR_PROJECT: 'gabrielfmh_bloodbank'     # Key ID del proyecto de Sonar
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
-    - name: Set up .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}  # Usa la variable de entorno para la versión de .NET
+    - name: Setup MSBuild Path
+      uses: microsoft/setup-msbuild@v1.1
 
-    - name: Restore dependencies
-      run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
 
-    - name: Build solution
-      run: dotnet build ProyectoFinal/Proyecto_Final_Blood_Bank.sln --configuration Release --no-incremental
+    - name: Restore NuGet Packages
+      run: nuget restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
-    - name: Run tests
-      run: dotnet test ProyectoFinal/Proyecto_Final_Blood_Bank.sln --logger "trx;LogFileName=test_results.trx"
+    - name: Build Solution
+      run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:Platform="AnyCPU" /m
 
-    - name: Publish test results
+    - name: Test Project
+      run: |
+        $testProjects = Get-ChildItem -Path ProyectoFinal/ -Recurse -Filter *.Tests.csproj
+        foreach ($testProject in $testProjects)
+        {
+          dotnet test $testProject.FullName --no-build --logger "trx;LogFileName=${{ github.workspace }}/${{ testProject.Name }}.trx"
+        }
+
+    - name: Publish Test Results
+      if: always()
       uses: actions/upload-artifact@v2
       with:
         name: Test Results
-        path: '**/*.trx'
+        path: '*.trx'
