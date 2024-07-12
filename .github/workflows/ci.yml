@@ -45,27 +45,7 @@ jobs:
     - name: Build solution
       run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:SkipSpecFlowTargets=true /p:Platform="Any CPU"
 
-    - name: Test Reporter
-      uses: dorny/test-reporter@v1
-      with:
-        artifact: '/test-results-(.*)/'
-        name: 'Test report $1'
-        path: 'tests/**/*.trx'
-        path-replace-backslashes: 'true'
-        reporter: 'dotnet-trx'
-        only-summary: 'false'
-        use-actions-summary: 'true'
-        badge-title: 'Tests Report'
-        list-suites: 'all'
-        list-tests: 'all'
-        max-annotations: '10'
-        fail-on-error: 'true'
-        fail-on-empty: 'true'
-        working-directory: ''
-        token: '${{ secrets.GITHUB_TOKEN }}'
-
-            
-
+    
     - name: Generate msbuild project file
       uses: tix-factory/msbuild-project-generator@v1
       with:
