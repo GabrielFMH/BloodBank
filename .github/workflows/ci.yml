@@ -49,7 +49,7 @@ jobs:
           --logger "trx;LogFileName=test_results.trx" `
           --no-build `
           --configuration Release
-          -- TestTimeout=120000  # Timeout global de 120 segundos (2 minutos)
+          -- NUnit.TestTimeout=120000  # Timeout global de 120 segundos
       
     - name: Publish test results
       uses: actions/upload-artifact@v2
