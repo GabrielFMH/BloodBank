@@ -31,7 +31,7 @@ namespace Proyecto_Final_Blood_Bank
             form = new RegistroDonantes();
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void CargarGrilla_ShouldLoadDataIntoGrid()
         {
             // Arrange
@@ -45,7 +45,7 @@ namespace Proyecto_Final_Blood_Bank
                 .Invoke(form, null);
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void Limpiar_ShouldClearFields()
         {
             // Arrange
@@ -82,7 +82,7 @@ namespace Proyecto_Final_Blood_Bank
             });
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void ValidarDni_ShouldReturnTrue_WhenDniIsValid()
         {
             // Arrange
@@ -96,7 +96,7 @@ namespace Proyecto_Final_Blood_Bank
             Assert.That(result, Is.True);
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void ValidarDni_ShouldReturnFalse_WhenDniIsInvalid()
         {
             // Arrange
@@ -110,7 +110,7 @@ namespace Proyecto_Final_Blood_Bank
             Assert.That(result, Is.False);
         }
 
-        [Test]
+       [Test, Timeout(120000)]
         public void DonanteExiste_ShouldReturnTrue_WhenDonanteExists()
         {
             // Arrange
@@ -123,7 +123,7 @@ namespace Proyecto_Final_Blood_Bank
                 .Invoke(form, new object[] { dni });
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void DonanteExiste_ShouldReturnFalse_WhenDonanteDoesNotExist()
         {
             // Arrange
@@ -136,7 +136,7 @@ namespace Proyecto_Final_Blood_Bank
                 .Invoke(form, new object[] { dni });
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void ValidarCampos_ShouldReturnTrue_WhenAllFieldsAreValid()
         {
             // Arrange
@@ -162,7 +162,7 @@ namespace Proyecto_Final_Blood_Bank
             Assert.That(result, Is.True);
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void ValidarCampos_ShouldReturnFalse_WhenAnyFieldIsInvalid()
         {
             // Arrange
@@ -177,7 +177,7 @@ namespace Proyecto_Final_Blood_Bank
             Assert.That(result, Is.False);
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void RegistrarDonante_ShouldInsertNewDonante()
         {
             // Arrange
@@ -202,7 +202,7 @@ namespace Proyecto_Final_Blood_Bank
                 .Invoke(form, null);
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void ActualizarBancoDeSangre_ShouldUpdateBancoDeSangre()
         {
             // Arrange
@@ -219,7 +219,7 @@ namespace Proyecto_Final_Blood_Bank
                 .Invoke(form, null);
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void ModificarDonante_ShouldUpdateExistingDonante()
         {
             // Arrange
@@ -242,7 +242,7 @@ namespace Proyecto_Final_Blood_Bank
         }
 
 
-        [Test]
+        [Test, Timeout(120000)]
         public void RegistroDonantes_Resize_ShouldResizeControls()
         {
             // Arrange
@@ -257,7 +257,7 @@ namespace Proyecto_Final_Blood_Bank
 
         }
 
-        [Test]
+        [Test, Timeout(120000)]
         public void lblVolver_MouseEnter_ShouldChangeFont()
         {
             // Arrange
@@ -269,7 +269,7 @@ namespace Proyecto_Final_Blood_Bank
         }
 
 
-        [Test]
+        [Test, Timeout(120000)]
         public void lblVolver_MouseLeave_ShouldResetFont()
         {
             // Arrange
