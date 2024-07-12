@@ -4,6 +4,8 @@ env:
   DOTNET_VERSION: '8.x'                     # la versión de .NET 
   SONAR_ORG: 'gabrielfmh'                   # Nombre de la organización de 
   SONAR_PROJECT: 'gabrielfmh_bloodbank'     # Key ID del proyecto de sonar 
+  VSTEST_TIMEOUT: 120000
+
 
 on: 
   push: 
@@ -49,7 +51,6 @@ jobs:
           --logger "trx;LogFileName=test_results.trx" `
           --no-build `
           --configuration Release
-          -- MSTest.TestTimeout=120000
       
     - name: Publish test results
       uses: actions/upload-artifact@v2
