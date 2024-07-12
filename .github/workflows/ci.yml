@@ -45,6 +45,10 @@ jobs:
     - name: Build solution
       run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:SkipSpecFlowTargets=true /p:Platform="Any CPU"
 
+    - name: Test Reporter
+      uses: dorny/test-reporter@v1.9.1
+            
+
     - name: Generate msbuild project file
       uses: tix-factory/msbuild-project-generator@v1
       with:
