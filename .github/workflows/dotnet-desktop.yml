@@ -15,8 +15,8 @@ jobs:
 
     env:
       Solution_Name: Proyecto_Final_Blood_Bank.sln                        # Reemplaza con el nombre de tu solución
-      Test_Project_Path: ProyectoFinal/Proyecto_Final_Blood_Bank.csproj # Ajusta a la ubicación de tu proyecto de pruebas
-      Wap_Project_Directory: ProyectoFinal/ProyectoFinal.Package          # Directorio del proyecto de empaquetado (si aplica)
+      Test_Project_Path: ProyectoFinal/Proyecto_Final_Blood_Bank.csproj  # Ajusta a la ubicación de tu proyecto
+      Wap_Project_Directory: ProyectoFinal/ProyectoFinal.Package         # Directorio del proyecto de empaquetado (si aplica)
       Wap_Project_Path: ProyectoFinal/ProyectoFinal.Package\ProyectoFinal.Package.wapproj  # Ruta del proyecto de empaquetado
 
     steps:
@@ -37,9 +37,8 @@ jobs:
       run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ matrix.configuration }}
 
     - name: Restore the application
-      run: msbuild ${{ env.Solution_Name }} /t:Restore /p:Configuration=${{ matrix.configuration }}
+      run: msbuild ${{ env.Solution_Name }} /t:Restore /p:Configuration=${{ matrix.configuration }} /p:Platform="Any CPU"
 
-    # Si usas un certificado para firmar tu aplicación, configura esta sección
     - name: Decode the pfx
       run: |
         $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
@@ -47,7 +46,7 @@ jobs:
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
     - name: Create the app package
-      run: msbuild ${{ env.Wap_Project_Path }} /p:Configuration=${{ matrix.configuration }} /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+      run: msbuild ${{ env.Wap_Project_Path }} /p:Configuration=${{ matrix.configuration }} /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }} /p:Platform="Any CPU"
 
     - name: Remove the pfx
       run: Remove-Item -path ${{ env.Wap_Project_Directory }}\GitHubActionsWorkflow.pfx
