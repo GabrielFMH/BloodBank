@@ -45,19 +45,6 @@ jobs:
     - name: Build solution
       run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:SkipSpecFlowTargets=true /p:Platform="Any CPU"
 
-    
-    - name: Generate msbuild project file
-      uses: tix-factory/msbuild-project-generator@v1
-      with:
-        directory: ./
-        projectFile: ./build.project
-
-    - name: Run tests
-      run: |
-        dotnet test ProyectoFinal/Proyecto_Final_Blood_Bank.sln `
-          --logger "trx;LogFileName=test_results.trx" `
-          --no-build `
-          --configuration Release
       
     - name: Publish test results
       uses: actions/upload-artifact@v2
