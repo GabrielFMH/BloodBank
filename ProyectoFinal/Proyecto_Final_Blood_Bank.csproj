@@ -260,6 +260,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Features\GestionarUsuario.feature" />
+    <Compile Remove="**/*.feature.cs" />
     <None Include="specflow.json" />
   </ItemGroup>
   <ItemGroup>
