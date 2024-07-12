@@ -15,7 +15,7 @@ jobs:
 
     env:
       Solution_Name: Proyecto_Final_Blood_Bank.sln                        # Reemplaza con el nombre de tu solución
-      Test_Project_Path: ProyectoFinal/Proyecto_Final_Blood_Bank.csproj --configuration Release # Ajusta a la ubicación de tu proyecto de pruebas
+      Test_Project_Path: ProyectoFinal/Proyecto_Final_Blood_Bank.csproj # Ajusta a la ubicación de tu proyecto de pruebas
       Wap_Project_Directory: ProyectoFinal/ProyectoFinal.Package          # Directorio del proyecto de empaquetado (si aplica)
       Wap_Project_Path: ProyectoFinal/ProyectoFinal.Package\ProyectoFinal.Package.wapproj  # Ruta del proyecto de empaquetado
 
