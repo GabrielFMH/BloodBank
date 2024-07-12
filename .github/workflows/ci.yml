@@ -35,8 +35,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
-    - name: Clean up Feature.cs files
-      run: rm -f **/*.feature.cs
+    - name: Remove feature.cs files
+      run: Remove-Item -Path '**/*.feature.cs' -Force
+
 
 
     - name: Build solution
