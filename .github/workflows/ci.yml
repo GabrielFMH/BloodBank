@@ -30,8 +30,14 @@ jobs:
     - name: Clean Build
       run: dotnet clean ProyectoFinal/Proyecto_Final_Blood_Bank.sln
 
+
+
     - name: Restore dependencies
       run: dotnet restore ProyectoFinal/Proyecto_Final_Blood_Bank.sln
+
+    - name: Clean up Feature.cs files
+      run: rm -f **/*.feature.cs
+
 
     - name: Build solution
       run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:Platform="Any CPU"
