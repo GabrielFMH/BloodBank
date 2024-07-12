@@ -44,8 +44,8 @@ jobs:
       run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:SkipSpecFlowTargets=true /p:Platform="Any CPU"
 
     - name: Run tests
-      run: dotnet test ProyectoFinal/Proyecto_Final_Blood_Bank.sln --logger "trx;LogFileName=test_results.trx"
-
+      run: dotnet test ProyectoFinal/Proyecto_Final_Blood_Bank.sln --logger "trx;LogFileName=test_results.trx" --no-restore --runtime win-x64
+      
     - name: Publish test results
       uses: actions/upload-artifact@v2
       with:
