@@ -9,6 +9,10 @@
         {
             "name": "SpecFlow.NUnit",
             "type": "Runtime"
+        },
+        {
+            "name": "SpecFlow.Tools.MsBuild.Generation",
+            "type": "Generator"
         }
     ]
 }
