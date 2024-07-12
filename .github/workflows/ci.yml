@@ -46,7 +46,7 @@ jobs:
       run: msbuild ProyectoFinal/Proyecto_Final_Blood_Bank.sln /p:Configuration=Release /p:SkipSpecFlowTargets=true /p:Platform="Any CPU"
 
     - name: Test Reporter
-    - uses: dorny/test-reporter@v1
+      uses: dorny/test-reporter@v1
       with:
         artifact: '/test-results-(.*)/'
         name: 'Test report $1'
